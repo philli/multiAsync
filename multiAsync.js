@@ -5,7 +5,7 @@
 
 (function(root, undefined) {
 
-    var multiAsync = function(tasks, callback) {
+    var multiAsync = function (tasks, callback) {
 
         var isArrTasks = Object.prototype.toString.call(tasks) === '[object Array]';
 
@@ -36,16 +36,16 @@
 
             function complete(res, k, task) {
                 if (typeof task === 'function') {
-                    task(function(data) {
+                    task(function (data) {
                         res[k] = data;
                         if (++count === length) {
-                            callback(res);
+                            callback(null, res);
                         }
                     });
                 } else {
                     res[k] = undefined;
                     if (++count === length) {
-                        callback(res);
+                        callback({msg: 'task type error'}, res);
                     }
                 }
             }
