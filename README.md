@@ -2,7 +2,7 @@
 multi-async task
 
 
-### Demo1：多任务
+### Demo1：multi-tasks
 
     multiAsync([
         function(cb){
@@ -25,7 +25,7 @@ multi-async task
     });
 
 
-### Demo2：多批多任务
+### Demo2：multi-batch-multi-task
 
     // 第一批任务
     multiAsync([
@@ -89,7 +89,7 @@ multi-async task
     });
 
 
-### Demo3：多(多批(多任务)) 
+### Demo3：multi-multi-batch-multi-task
     
     multiAsync([
         function(callback){
