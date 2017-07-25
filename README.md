@@ -7,17 +7,17 @@ multi-async task
     multiAsync([
         function(cb){
             setTimeout(function(){
-                cb('123');
+                cb(null, '123');
             }, 1000);
         },
         function(cb){
             setTimeout(function(){
-                cb('456');
+                cb(null, '456');
             }, 3000);
         },
         function(cb){
             setTimeout(function(){
-                cb('789');
+                cb(null, '789');
             }, 2000);
         }
     ], function(res){
@@ -31,17 +31,17 @@ multi-async task
     multiAsync([
         function(cb){
             setTimeout(function(){
-                cb('123');
+                cb(null, '123');
             }, 1000);
         },
         function(cb){
             setTimeout(function(){
-                cb('456');
+                cb(null, '456');
             }, 3000);
         },
         function(cb){
             setTimeout(function(){
-                cb('789');
+                cb(null, '789');
             }, 2000);
         }
     ], function(res){
@@ -52,17 +52,17 @@ multi-async task
     multiAsync([
         function(cb){
             setTimeout(function(){
-                cb('abc');
+                cb(null, 'abc');
             }, 1500);
         },
         function(cb){
             setTimeout(function(){
-                cb();
+                cb(null);
             }, 1200);
         },
         function(cb){
             setTimeout(function(){
-                cb('def');
+                cb(null, 'def');
             }, 2500);
         }
     ], function(res){
@@ -72,16 +72,16 @@ multi-async task
     // 第三批任务
     multiAsync({
         a: function(cb){
-            cb('xxx');
+            cb(null, 'xxx');
         },
         b: function(cb){
             setTimeout(function(){
-                cb('yyy');
+                cb(null, 'yyy');
             }, 1500);
         },
         c: function(cb){
             setTimeout(function(){
-                cb('zzz');
+                cb(null, 'zzz');
             }, 1000);
         }
     }, function(res){
@@ -96,61 +96,61 @@ multi-async task
             multiAsync([
                 function(cb){
                     setTimeout(function(){
-                        cb('123');
+                        cb(null, '123');
                     }, 1000);
                 },
                 function(cb){
                     setTimeout(function(){
-                        cb('456');
+                        cb(null, '456');
                     }, 3000);
                 },
                 function(cb){
                     setTimeout(function(){
-                        cb('789');
+                        cb(null, '789');
                     }, 2000);
                 }
             ], function(res){
-                callback(res);
+                callback(null, res);
             });
         },
         function(callback){
             multiAsync([
                 function(cb){
                     setTimeout(function(){
-                        cb('abc');
+                        cb(null, 'abc');
                     }, 1500);
                 },
                 function(cb){
                     setTimeout(function(){
-                        cb();
+                        cb(null);
                     }, 1200);
                 },
                 function(cb){
                     setTimeout(function(){
-                        cb('def');
+                        cb(null, 'def');
                     }, 2500);
                 }
             ], function(res){
-                callback(res);
+                callback(null, res);
             });
         },
         function(callback){
             multiAsync({
                 a: function(cb){
-                    cb('xxx');
+                    cb(null, 'xxx');
                 },
                 b: function(cb){
                     setTimeout(function(){
-                        cb('yyy');
+                        cb(null, 'yyy');
                     }, 1500);
                 },
                 c: function(cb){
                     setTimeout(function(){
-                        cb('zzz');
+                        cb(null, 'zzz');
                     }, 1000);
                 }
             }, function(res){
-                callback(res);
+                callback(null, res);
             });
         },
     ], function(result){
