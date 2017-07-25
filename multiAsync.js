@@ -36,10 +36,10 @@
 
             function complete(res, k, task) {
                 if (typeof task === 'function') {
-                    task(function (data) {
+                    task(function (err, data) {
                         res[k] = data;
                         if (++count === length) {
-                            callback(null, res);
+                            callback(err, res);
                         }
                     });
                 } else {
