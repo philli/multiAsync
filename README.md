@@ -20,8 +20,8 @@ multi-async task
                 cb(null, '789');
             }, 2000);
         }
-    ], function(res){
-        console.log(res);
+    ], function(err, res){
+        console.log(err, res);
     });
 
 
@@ -44,8 +44,8 @@ multi-async task
                 cb(null, '789');
             }, 2000);
         }
-    ], function(res){
-        console.log(res);
+    ], function(err, res){
+        console.log(err, res);
     });
     
     // 第二批任务
@@ -65,8 +65,8 @@ multi-async task
                 cb(null, 'def');
             }, 2500);
         }
-    ], function(res){
-        console.log(res);
+    ], function(err, res){
+        console.log(err, res);
     });
     
     // 第三批任务
@@ -84,8 +84,8 @@ multi-async task
                 cb(null, 'zzz');
             }, 1000);
         }
-    }, function(res){
-        console.log(res);
+    }, function(err, res){
+        console.log(err, res);
     });
 
 
@@ -109,7 +109,7 @@ multi-async task
                         cb(null, '789');
                     }, 2000);
                 }
-            ], function(res){
+            ], function(err, res){
                 callback(null, res);
             });
         },
@@ -130,7 +130,7 @@ multi-async task
                         cb(null, 'def');
                     }, 2500);
                 }
-            ], function(res){
+            ], function(err, res){
                 callback(null, res);
             });
         },
@@ -149,11 +149,11 @@ multi-async task
                         cb(null, 'zzz');
                     }, 1000);
                 }
-            }, function(res){
+            }, function(err, res){
                 callback(null, res);
             });
         },
-    ], function(result){
-        console.log(result);
+    ], function(err, result){
+        console.log(err, result);
     });
 
