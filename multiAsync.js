@@ -11,41 +11,46 @@
 
         if (tasks && (isArrTasks && tasks.length || typeof tasks === 'object') && typeof callback === 'function') {
             var res;
+            var resErr;
             var length = 0;
             var count = 0;
 
             // 数组
             if (isArrTasks) {
+                resErr = [];
                 res = [];
                 length = tasks.length;
                 while (tasks.length) {
-                    complete(res, length - tasks.length, tasks.shift());
+                    complete(resErr, res, length - tasks.length, tasks.shift());
                 }
             }
             // 对象
             else {
+                resErr = {};
                 res = {};
                 // 单独获取length，避免非异步任务
                 for (var k in tasks) {
                     length++;
                 }
                 for (var k in tasks) {
-                    complete(res, k, tasks[k]);
+                    complete(resErr, res, k, tasks[k]);
                 }
             }
 
-            function complete(res, k, task) {
+            function complete(resErr, res, k, task) {
                 if (typeof task === 'function') {
                     task(function (err, data) {
+                        resErr[k] = err;
                         res[k] = data;
                         if (++count === length) {
-                            callback(err, res);
+                            callback(resErr, res);
                         }
                     });
                 } else {
+                    resErr[k] = {msg: 'task type error'};
                     res[k] = undefined;
                     if (++count === length) {
-                        callback({msg: 'task type error'}, res);
+                        callback(resErr, res);
                     }
                 }
             }
