@@ -29,7 +29,7 @@
                 resErr = {};
                 res = {};
                 // 单独获取length，避免非异步任务
-                for (var k in tasks) {
+                for (var t in tasks) {
                     length++;
                 }
                 for (var k in tasks) {
