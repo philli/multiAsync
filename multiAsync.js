@@ -40,9 +40,18 @@
             function complete(resErr, res, k, task) {
                 if (typeof task === 'function') {
                     task(function (err, data) {
-                        resErr[k] = err;
+                        err && (resErr[k] = err);
                         res[k] = data;
                         if (++count === length) {
+                            if (isArrTasks) {
+                                !resErr.length && (resErr = null);
+                            } else {
+                                var hasErr;
+                                for (var r in resErr) {
+                                    hasErr = 1;
+                                }
+                                !hasErr && (resErr = null);
+                            }
                             callback(resErr, res);
                         }
                     });
