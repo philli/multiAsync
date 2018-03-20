@@ -1,5 +1,6 @@
 /**
  * @file MultiAsync.js
+ * @url https://github.com/philli/multiAsync/blob/master/multiAsync.js
  * @author Phil Li <zixulee@163.com>
  */
 
