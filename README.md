@@ -16,7 +16,7 @@ multi-async task
                 cb(null, str);
             }, 3000);
         }, '456'],
-        // 对象参数
+        // 带参数
         [function(cb, options){
             setTimeout(function(){
                 cb(null, options.str);
