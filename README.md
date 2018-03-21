@@ -10,13 +10,13 @@ multi-async task
                 cb(null, '123');
             }, 1000);
         },
-        // 带参数<br>
+        // 带参数
         [function(cb, str){
             setTimeout(function(){
                 cb(null, str);
             }, 3000);
         }, '456'],
-        // 带参数<br>
+        // 带参数
         [function(cb, options){
             setTimeout(function(){
                 cb(null, options.str);
@@ -78,7 +78,7 @@ multi-async task
         a: function(cb){
             cb(null, 'xxx');
         },
-        // 带参数<br>
+        // 带参数
         b: [function(cb, str){
             setTimeout(function(){
                 cb(null, str);
