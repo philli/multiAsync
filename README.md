@@ -10,16 +10,20 @@ multi-async task
                 cb(null, '123');
             }, 1000);
         },
-        function(cb){
+        // 带参数
+        [function(cb, str){
             setTimeout(function(){
-                cb(null, '456');
+                cb(null, str);
             }, 3000);
-        },
-        function(cb){
+        }, '456'],
+        // 对象参数
+        [function(cb, options){
             setTimeout(function(){
-                cb(null, '789');
+                cb(null, options.str);
             }, 2000);
-        }
+        }, {
+            str: '789'
+        }]
     ], function(err, res){
         console.log(err, res);
     });
@@ -74,11 +78,12 @@ multi-async task
         a: function(cb){
             cb(null, 'xxx');
         },
-        b: function(cb){
+        // 带参数
+        b: [function(cb, str){
             setTimeout(function(){
-                cb(null, 'yyy');
+                cb(null, str);
             }, 1500);
-        },
+        }, 'yyy'],
         c: function(cb){
             setTimeout(function(){
                 cb(null, 'zzz');
