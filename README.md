@@ -3,21 +3,21 @@ multi-async task
 
 
 ### Demo1：multi-tasks
-
+```javascript
     multiAsync([
         function(cb){
             setTimeout(function(){
                 cb(null, '123');
             }, 1000);
         },
-        // 带参数<br>
-        [function(cb, str){
+        // 带参数<br>
+        [function(cb, str){
             setTimeout(function(){
                 cb(null, str);
             }, 3000);
         }, '456'],
-        // 带参数<br>
-        [function(cb, options){
+        // 带参数<br>
+        [function(cb, options){
             setTimeout(function(){
                 cb(null, options.str);
             }, 2000);
@@ -27,10 +27,10 @@ multi-async task
     ], function(err, res){
         console.log(err, res);
     });
-
+```
 
 ### Demo2：multi-batch-multi-task
-
+```javascript
     // 第一批任务
     multiAsync([
         function(cb){
@@ -78,8 +78,8 @@ multi-async task
         a: function(cb){
             cb(null, 'xxx');
         },
-        // 带参数<br>
-        b: [function(cb, str){
+        // 带参数<br>
+        b: [function(cb, str){
             setTimeout(function(){
                 cb(null, str);
             }, 1500);
@@ -92,10 +92,10 @@ multi-async task
     }, function(err, res){
         console.log(err, res);
     });
-
+```
 
 ### Demo3：multi-multi-batch-multi-task
-    
+```javascript
     multiAsync([
         function(callback){
             multiAsync([
@@ -161,4 +161,4 @@ multi-async task
     ], function(err, result){
         console.log(err, result);
     });
-
+```
