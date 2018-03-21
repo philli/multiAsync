@@ -38,7 +38,7 @@
                 }
             }
 
-            function complete(resErr, res, k, task) {
+            function complete(resErr, res, k, task, params) {
                 if (typeof task === 'function') {
                     task(function (err, data) {
                         err && (resErr[k] = err);
@@ -55,7 +55,9 @@
                             }
                             callback(resErr, res);
                         }
-                    });
+                    }, params);
+                } else if (Object.prototype.toString.call(task) === '[object Array]') {
+                    complete(resErr, res, k, task[0], task[1]);
                 } else {
                     resErr[k] = {msg: 'task type error'};
                     res[k] = undefined;
